@@ -33,7 +33,11 @@ public class MainActivity extends Activity {
 		startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
     }
     public void draw(View view){
-    	
+    	if(image!=null){
+    		Intent intent=new Intent(this,DrawActivity.class);
+    		startActivity(intent);
+    	}else
+    		Toast.makeText(this,getResources().getString(R.string.make_photo_text),Toast.LENGTH_SHORT).show();
     }
     public void sendToEmail(View view){
     	
@@ -46,7 +50,7 @@ public class MainActivity extends Activity {
 				image=(Bitmap) extras.get("data");
 			}else
 			{
-				Toast.makeText(this,"nie", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this,getResources().getString(R.string.did_not_make_photo), Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

@@ -23,13 +23,15 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="0.33"
-        android:text="@string/draw_text" />
+        android:text="@string/draw_text" 
+        android:onClick="draw"/>
 
     <Button
         android:id="@+id/button3"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="0.33"
-        android:text="@string/send_To_email_text" />
+        android:text="@string/send_To_email_text" 
+        android:onClick="sendToEmail"/>
 
 </LinearLayout>
