@@ -4,5 +4,8 @@
     <string name="app_name">PhotoDrawer</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="make_photo_text">Zrób zdjęcie</string>
+    <string name="draw_text">Rysuj</string>
+    <string name="send_To_email_text">Wyślij</string>
 
 </resources>
