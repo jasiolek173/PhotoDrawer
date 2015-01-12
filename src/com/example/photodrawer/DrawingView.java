@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-public class DrawingView extends ImageView {
+public class DrawingView extends View {
 
 	private Paint paint = new Paint();
 	private Path path = new Path();
@@ -22,6 +22,12 @@ public class DrawingView extends ImageView {
 		paint.setColor(Color.BLUE);
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setStrokeJoin(Paint.Join.ROUND);
+	}
+	public void setPaintColor(Color c){
+		paint.setColor(c.hashCode());
+	}
+	public void setPaintStrokeWidth(float f){
+		paint.setStrokeWidth(f);
 	}
 
 	@Override

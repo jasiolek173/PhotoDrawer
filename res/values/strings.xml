@@ -9,5 +9,7 @@
     <string name="send_To_email_text">Wyślij</string>
     <string name="did_not_make_photo">Nie zrobiono zdjęcia</string>
     <string name="title_activity_draw">DrawActivity</string>
+    <string name="color_text">Kolor :</string>
+    <string name="ply_text">Grubość :</string>
 
 </resources>

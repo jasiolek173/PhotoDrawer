@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.MediaStore.Images;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -36,7 +37,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void draw(View view) {
-		if (dataBase.getBitmap() == null) {
+		if (dataBase.getBitmap() != null) {
 			Intent intent = new Intent(this, DrawActivity.class);
 			startActivity(intent);
 		} else
@@ -46,7 +47,13 @@ public class MainActivity extends Activity {
 	}
 
 	public void sendToEmail(View view) {
-
+	    String pathofBmp = Images.Media.insertImage(getContentResolver(), dataBase.getBitmap(),"title", null);
+	    Uri bmpUri = Uri.parse(pathofBmp);
+	    final Intent emailIntent1 = new Intent(android.content.Intent.ACTION_SEND);
+	    emailIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	    emailIntent1.putExtra(Intent.EXTRA_STREAM, bmpUri);
+	    emailIntent1.setType("image/png");
+	    startActivity(emailIntent1); 
 	}
 
 	@Override

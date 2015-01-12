@@ -24,7 +24,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/ply_text" />
 
             <Spinner
                 android:id="@+id/spinner1"
@@ -41,7 +41,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/color_text" />
 
             <Spinner
                 android:id="@+id/spinner2"
