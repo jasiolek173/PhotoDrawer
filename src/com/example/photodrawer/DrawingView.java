@@ -9,12 +9,13 @@ import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 
-public class DrawingView extends View {
-	
-	private Paint paint=new Paint();
-	private Path path=new Path();
-	
+public class DrawingView extends ImageView {
+
+	private Paint paint = new Paint();
+	private Path path = new Path();
+
 	public DrawingView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		paint.setStrokeWidth(5f);
@@ -22,18 +23,19 @@ public class DrawingView extends View {
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 	}
-	
+
 	@Override
 	protected void onDraw(Canvas canvas) {
 		canvas.drawPath(path, paint);
 		super.onDraw(canvas);
 	}
+
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		float eventX=event.getX();
-		float eventY=event.getY();
-		
-		switch(event.getAction()){
+		float eventX = event.getX();
+		float eventY = event.getY();
+
+		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			path.moveTo(eventX, eventY);
 			return true;
@@ -41,7 +43,7 @@ public class DrawingView extends View {
 			path.lineTo(eventX, eventY);
 			break;
 		default:
-				return false;
+			return false;
 		}
 		invalidate();
 		return super.onTouchEvent(event);
