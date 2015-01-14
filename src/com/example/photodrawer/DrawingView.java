@@ -31,9 +31,9 @@ public class DrawingView extends View {
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 	}
-	public void setPaintColor(Color c){
-		paint.setColor(c.hashCode());
-		selectedColor=c.hashCode();
+	public void setPaintColor(int c){
+		paint.setColor(c);
+		selectedColor=c;
 	}
 	public void setPaintStrokeWidth(float f){
 		paint.setStrokeWidth(f);

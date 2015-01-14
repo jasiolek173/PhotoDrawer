@@ -3,28 +3,33 @@ package com.example.photodrawer;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
-public class DrawActivity extends Activity {
+import com.example.photodrawer.ColorPickerDialog.OnColorChangedListener;
+
+public class DrawActivity extends Activity implements OnColorChangedListener {
 
 	private DataBase database;
 	private DrawingView drawingView;
 	private ArrayAdapter<Float> adapter;
+	private int defaultColor;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_draw);
 		
+		defaultColor=Color.BLUE;
 		database = DataBase.getInstance();
 		drawingView = (DrawingView) findViewById(R.id.drawingView1);
 		Drawable d = new BitmapDrawable(getResources(),database.getBitmap());
@@ -49,6 +54,9 @@ public class DrawActivity extends Activity {
 			}
 			
 		});
+		drawingView.setPaintColor(defaultColor);
+		Button bt=(Button)findViewById(R.id.button1);
+		bt.setBackgroundColor(defaultColor);
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,6 +74,18 @@ public class DrawActivity extends Activity {
 		    drawingView.draw(c);
 		    database.setBitmap(b);
 		super.onPause();
+	}
+	public void onClick(View view){
+		ColorPickerDialog color = new ColorPickerDialog(this,this, "picker",defaultColor,defaultColor);
+        color.show();
+	}
+	@Override
+	public void colorChanged(String key, int color) {
+		// TODO Auto-generated method stub
+		Button bt=(Button)findViewById(R.id.button1);
+		bt.setBackgroundColor(color);
+		defaultColor=color;
+		drawingView.setPaintColor(color);
 	}
 
 }

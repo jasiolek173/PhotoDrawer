@@ -11,5 +11,7 @@
     <string name="title_activity_draw">DrawActivity</string>
     <string name="color_text">Kolor :</string>
     <string name="ply_text">Grubość :</string>
+    <string name="settings_default_color_confirm">Anuluj</string>
+    <string name="settings_bg_color_confirm">Zatwierdź</string>
 
 </resources>

@@ -1,31 +1,27 @@
 package com.example.photodrawer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.photodrawer.ColorPickerDialog.OnColorChangedListener;
 
 public class MainActivity extends Activity {
 
 	static final int REQUEST_IMAGE_CAPTURE = 1;
 	private DataBase dataBase;
-	private File file=null;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,25 +52,12 @@ public class MainActivity extends Activity {
 	}
 
 	public void sendToEmail(View view) {
-		String root = Environment.getExternalStorageDirectory().toString();
-		File myDir = new File(root + "/saved_images");    
-		myDir.mkdirs();
-		String fname = "Image.jpg";
-		File file = new File (myDir, fname);
-		if (file.exists ()) file.delete (); 
-		try {
-		       FileOutputStream out = new FileOutputStream(file);
-		       dataBase.getBitmap().compress(Bitmap.CompressFormat.JPEG, 90, out);
-		       out.flush();
-		       out.close();
-
-		} catch (Exception e) {
-		       e.printStackTrace();
-		}
-		Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND); 
-		emailIntent.setType("application/image");
-		emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-		startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+		Uri u=dataBase.saveBitmap("Image.jpg");
+		if(u!=null){
+			Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND); 
+			emailIntent.setType("application/image");
+			emailIntent.putExtra(Intent.EXTRA_STREAM, u);
+			startActivity(Intent.createChooser(emailIntent, "Send mail..."));}
 	}
 
 	@Override
@@ -91,4 +74,7 @@ public class MainActivity extends Activity {
 			}
 		}
 	}
+
+	
+	
 }
