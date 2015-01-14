@@ -1,4 +1,7 @@
-package com.example.photodrawer;
+package other;
+
+import com.example.photodrawer.R;
+import com.example.photodrawer.R.string;
 
 import android.app.Dialog;
 import android.content.Context;

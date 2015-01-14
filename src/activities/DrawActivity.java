@@ -1,5 +1,11 @@
-package com.example.photodrawer;
+package activities;
 
+import com.example.photodrawer.R;
+
+import other.ColorPickerDialog;
+import other.DataBase;
+import other.DrawingView;
+import other.ColorPickerDialog.OnColorChangedListener;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -15,7 +21,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import com.example.photodrawer.ColorPickerDialog.OnColorChangedListener;
 
 public class DrawActivity extends Activity implements OnColorChangedListener {
 

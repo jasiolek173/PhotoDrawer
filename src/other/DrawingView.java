@@ -1,4 +1,4 @@
-package com.example.photodrawer;
+package other;
 
 import java.util.ArrayList;
 import java.util.HashMap;

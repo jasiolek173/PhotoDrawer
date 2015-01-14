@@ -1,4 +1,4 @@
-package com.example.photodrawer;
+package other;
 
 import java.io.File;
 import java.io.FileOutputStream;

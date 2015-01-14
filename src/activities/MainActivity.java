@@ -1,7 +1,9 @@
-package com.example.photodrawer;
+package activities;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import other.DataBase;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,7 +18,10 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.photodrawer.ColorPickerDialog.OnColorChangedListener;
+import com.example.photodrawer.R;
+import com.example.photodrawer.R.layout;
+import com.example.photodrawer.R.menu;
+import com.example.photodrawer.R.string;
 
 public class MainActivity extends Activity {
 
